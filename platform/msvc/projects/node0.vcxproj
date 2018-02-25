@@ -11,15 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\node0\CompFactory.h" />
+    <ClInclude Include="..\..\..\include\node0\CompStorer.h" />
     <ClInclude Include="..\..\..\include\node0\NodeComponent.h" />
     <ClInclude Include="..\..\..\include\node0\SceneNode.h" />
+    <ClInclude Include="..\..\..\include\node0\SerializeSystem.h" />
     <ClInclude Include="..\..\..\include\node0\typedef.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\node0\SceneNode.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\CompFactory.cpp" />
+    <ClCompile Include="..\..\..\source\CompStorer.cpp" />
     <ClCompile Include="..\..\..\source\SceneNode.cpp" />
+    <ClCompile Include="..\..\..\source\SerializeSystem.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>3.node0</ProjectName>
@@ -64,7 +70,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\guard\include;..\..\..\..\external\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\cu\src;..\..\..\..\guard\include;..\..\..\..\external\rapidjson\include;..\..\..\..\external\boost\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -78,7 +84,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\guard\include;..\..\..\..\external\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\cu\src;..\..\..\..\guard\include;..\..\..\..\external\rapidjson\include;..\..\..\..\external\boost\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>

@@ -2,6 +2,8 @@
 
 #include <rapidjson/document.h>
 
+#include <boost/noncopyable.hpp>
+
 namespace n0
 {
 
@@ -26,20 +28,12 @@ inline ComponentID GetComponentTypeID() noexcept
     return type_id;
 }
 
-class NodeComponent
+class NodeComponent : boost::noncopyable
 {
 public:
 	virtual ~NodeComponent() {}
 
-	//virtual void Init() {}
-	//virtual void Update() {}
-	//virtual void Draw() {}
-
 	virtual const char* Type() const = 0;
-
-	virtual bool StoreToJson(rapidjson::Value& val, 
-		rapidjson::MemoryPoolAllocator<>& alloc) const { return false; }
-	virtual void LoadFromJson(const rapidjson::Value& val) {}
 
 }; // NodeComponent
 
