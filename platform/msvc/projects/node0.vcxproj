@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\node0\CompComplex.h" />
     <ClInclude Include="..\..\..\include\node0\CompFactory.h" />
     <ClInclude Include="..\..\..\include\node0\CompStorer.h" />
     <ClInclude Include="..\..\..\include\node0\NodeComponent.h" />
@@ -22,6 +23,7 @@
     <None Include="..\..\..\include\node0\SceneNode.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\CompComplex.cpp" />
     <ClCompile Include="..\..\..\source\CompFactory.cpp" />
     <ClCompile Include="..\..\..\source\CompStorer.cpp" />
     <ClCompile Include="..\..\..\source\SceneNode.cpp" />

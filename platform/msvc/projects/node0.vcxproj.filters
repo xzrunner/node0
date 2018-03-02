@@ -17,6 +17,9 @@
     <ClInclude Include="..\..\..\include\node0\CompStorer.h">
       <Filter>component</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\CompComplex.h">
+      <Filter>component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
@@ -29,6 +32,9 @@
       <Filter>component</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\CompStorer.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\CompComplex.cpp">
       <Filter>component</Filter>
     </ClCompile>
   </ItemGroup>
