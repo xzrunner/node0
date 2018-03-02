@@ -4,6 +4,7 @@
 #include "node0/typedef.h"
 
 #include <vector>
+#include <functional>
 
 namespace n0
 {
@@ -13,8 +14,11 @@ class CompComplex : public NodeComponent
 public:
 	virtual const char* Type() const override { return TYPE_NAME; }
 
+	void Traverse(std::function<bool(const n0::SceneNodePtr&)> func) const;
+
 	void AddChild(const std::shared_ptr<SceneNode>& child);
 	bool RemoveChild(const std::shared_ptr<SceneNode>& child);
+	void RemoveAllChildren();
 
 	const std::vector<SceneNodePtr>& GetAllChildren() const {
 		return m_children;
