@@ -8,15 +8,6 @@
     <ClInclude Include="..\..\..\include\node0\SceneNode.h">
       <Filter>entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\node0\SerializeSystem.h">
-      <Filter>system</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\node0\CompFactory.h">
-      <Filter>component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\node0\CompStorer.h">
-      <Filter>component</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\node0\CompComplex.h">
       <Filter>component</Filter>
     </ClInclude>
@@ -25,15 +16,6 @@
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
       <Filter>entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\SerializeSystem.cpp">
-      <Filter>system</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\CompFactory.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\CompStorer.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\CompComplex.cpp">
       <Filter>component</Filter>
     </ClCompile>
@@ -41,9 +23,6 @@
   <ItemGroup>
     <Filter Include="component">
       <UniqueIdentifier>{8dd63a60-ac04-462b-ae71-3baeae7ab3e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="system">
-      <UniqueIdentifier>{29fe6ec6-a9f7-407b-a0ac-663e0346103b}</UniqueIdentifier>
     </Filter>
     <Filter Include="entity">
       <UniqueIdentifier>{bcc32d85-4792-423e-a535-2ca7012771d1}</UniqueIdentifier>
