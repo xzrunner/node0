@@ -36,8 +36,29 @@ public:
 	virtual ~NodeComponent() {}
 
 	virtual const char* Type() const = 0;
+	virtual n0::ComponentID TypeID() const = 0;
 	virtual std::unique_ptr<NodeComponent> Clone() const = 0;
 
 }; // NodeComponent
+
+class NodeComponentLessThan
+{
+public:
+	bool operator() (const std::unique_ptr<NodeComponent>& x, const std::unique_ptr<NodeComponent>& y)
+	{
+		return x->TypeID() < y->TypeID();
+	}
+
+	bool operator() (const std::unique_ptr<NodeComponent>& x, ComponentID id)
+	{
+		return x->TypeID() < id;
+	}
+
+	bool operator() (ComponentID id, const std::unique_ptr<NodeComponent>& y)
+	{
+		return id < y->TypeID();
+	}
+
+}; // NodeComponentLessThan
 
 }
