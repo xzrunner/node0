@@ -13,6 +13,7 @@ class CompComplex : public NodeComponent
 {
 public:
 	virtual const char* Type() const override { return TYPE_NAME; }
+	virtual std::unique_ptr<NodeComponent> Clone() const override;
 
 	void Traverse(std::function<bool(const n0::SceneNodePtr&)> func) const;
 

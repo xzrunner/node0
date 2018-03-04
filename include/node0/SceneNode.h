@@ -13,6 +13,12 @@ namespace n0
 class SceneNode
 {
 public:
+	SceneNode() {}
+	SceneNode(const SceneNode&);
+	SceneNode& operator = (const SceneNode&);
+
+	std::shared_ptr<SceneNode> Clone() const;
+
 	template <typename T>
 	bool HasComponent() const;
 

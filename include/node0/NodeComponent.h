@@ -2,6 +2,8 @@
 
 #include <rapidjson/document.h>
 
+#include <memory>
+
 #include <boost/noncopyable.hpp>
 
 namespace n0
@@ -34,6 +36,7 @@ public:
 	virtual ~NodeComponent() {}
 
 	virtual const char* Type() const = 0;
+	virtual std::unique_ptr<NodeComponent> Clone() const = 0;
 
 }; // NodeComponent
 
