@@ -20,12 +20,11 @@ T& SceneNode::AddComponent(TArgs&&... args)
 
 	auto comp_ptr = std::make_unique<T>(std::forward<TArgs>(args)...);
 	auto& comp = *comp_ptr;
-	size_t idx = m_components.size();
-	GD_ASSERT(idx < 256, "too many components");
-	m_components.emplace_back(std::move(comp_ptr));
 
-	m_component_array[GetComponentTypeID<T>()]  = static_cast<uint8_t>(idx);
 	m_component_bitset[GetComponentTypeID<T>()] = true;
+	m_components.insert(
+		std::upper_bound(m_components.begin(), m_components.end(), comp_ptr, NodeComponentLessThan()),
+		std::move(comp_ptr));
 
 //	comp.Init();
 	return comp;
@@ -35,7 +34,12 @@ template <typename T>
 T& SceneNode::GetComponent() const
 {
 	GD_ASSERT(HasComponent<T>(), "no component");
-	auto ptr(m_components[m_component_array[GetComponentTypeID<T>()]].get());
+	auto id = GetComponentTypeID<T>();
+
+	auto itr = std::upper_bound(m_components.begin(), m_components.end(), id, NodeComponentLessThan());
+//	GD_ASSERT(itr != m_components.end(), "err idx");
+
+	auto ptr(itr->get());
 	return *reinterpret_cast<T*>(ptr);
 }
 

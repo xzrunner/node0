@@ -5,7 +5,6 @@ namespace n0
 
 SceneNode::SceneNode(const SceneNode& node)
 	: m_component_bitset(node.m_component_bitset)
-	, m_component_array(node.m_component_array)
 {
 	m_components.reserve(node.m_components.size());
 	for (auto& comp : node.m_components) {
@@ -26,7 +25,6 @@ SceneNode& SceneNode::operator = (const SceneNode& node)
 	}
 
 	m_component_bitset = node.m_component_bitset;
-	m_component_array = node.m_component_array;
 
 	return *this;
 }

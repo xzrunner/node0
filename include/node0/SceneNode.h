@@ -33,11 +33,13 @@ public:
 	}
 
 private:
+	
+
+private:
 	std::vector<std::unique_ptr<NodeComponent>> m_components;
 
 	static const size_t MAX_COMPONENTS = 32;
-	std::bitset<MAX_COMPONENTS>         m_component_bitset;
-	std::array<uint8_t, MAX_COMPONENTS> m_component_array;
+	std::bitset<MAX_COMPONENTS> m_component_bitset;
 
 }; // SceneNode
 
