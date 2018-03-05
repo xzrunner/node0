@@ -70,6 +70,8 @@ bool SceneNode::HasSharedComp() const
 		auto id = GetSharedCompTypeID<CompAsset>();
 		if (!m_shared_comp_bitset[id]) {
 			return false;
+		} else if (std::is_same<T, CompAsset>::value) {
+			return true;
 		} else {
 			int idx = QueryIndexByID<std::shared_ptr<NodeSharedComp>>(m_shared_comp, id);
 			auto& comp = *reinterpret_cast<T*>(m_shared_comp[idx].get());
@@ -110,7 +112,34 @@ T& SceneNode::AddSharedComp(TArgs&&... args)
 }
 
 template <typename T>
+void SceneNode::AddSharedCompNoCreate(const std::shared_ptr<T>& comp)
+{
+	static_assert(std::is_base_of<NodeSharedComp, T>::value,
+		"T must inherit from NodeSharedComp");
+
+	GD_ASSERT(!HasSharedComp<T>(), "already has the component");
+
+	SharedCompID id = std::is_base_of<CompAsset, T>::value ? 
+		GetSharedCompTypeID<CompAsset>() : GetSharedCompTypeID<T>();
+	m_shared_comp_bitset[id] = true;
+
+	auto itr = m_shared_comp.begin();
+	for (; itr != m_shared_comp.end(); ++itr) {
+		if ((*itr)->TypeID() > id) {
+			break;
+		}
+	}
+	m_shared_comp.insert(itr, comp);
+}
+
+template <typename T>
 T& SceneNode::GetSharedComp() const
+{
+	return *reinterpret_cast<T*>(GetSharedCompPtr<T>().get());
+}
+
+template <typename T>
+std::shared_ptr<T> SceneNode::GetSharedCompPtr() const
 {
 	static_assert(std::is_base_of<NodeSharedComp, T>::value,
 		"T must inherit from NodeSharedComp");
@@ -120,7 +149,7 @@ T& SceneNode::GetSharedComp() const
 		GetSharedCompTypeID<CompAsset>() : GetSharedCompTypeID<T>();
 
 	int idx = QueryIndexByID<std::shared_ptr<NodeSharedComp>>(m_shared_comp, id);
-	return *reinterpret_cast<T*>(m_shared_comp[idx].get());
+	return std::static_pointer_cast<T>(m_shared_comp[idx]);
 }
 
 template <typename T>

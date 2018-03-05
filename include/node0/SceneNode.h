@@ -43,7 +43,12 @@ public:
 	T& AddSharedComp(TArgs&&... args);
 
 	template <typename T>
+	void AddSharedCompNoCreate(const std::shared_ptr<T>& comp);
+
+	template <typename T>
 	T& GetSharedComp() const;
+	template <typename T>
+	std::shared_ptr<T> GetSharedCompPtr() const;
 
 	void TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeSharedComp>&)> func);
 	
