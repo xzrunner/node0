@@ -53,24 +53,7 @@ T& SceneNode::GetUniqueComp() const
 	GD_ASSERT(HasUniqueComp<T>(), "no component");
 	auto id = GetUniqueCompTypeID<T>();
 
-	int idx = -1;
-	int start = 0;
-	int end = m_unique_comp.size() - 1;
-	while (start <= end)
-	{
-		int mid = (start + end) / 2;
-		auto& comp = m_unique_comp[mid];
-		if (id == comp->TypeID()) {
-			idx = mid;
-			break;
-		} else if (id < comp->TypeID()) {
-			end = mid - 1;
-		} else {
-			start = mid + 1;
-		}
-	}	
-	GD_ASSERT(idx != -1, "err idx");
-
+	int idx = QueryIndexByID<std::unique_ptr<NodeUniqueComp>>(m_unique_comp, id);
 	return *reinterpret_cast<T*>(m_unique_comp[idx].get());
 }
 
@@ -82,7 +65,21 @@ bool SceneNode::HasSharedComp() const
 	static_assert(std::is_base_of<NodeSharedComp, T>::value,
 		"T must inherit from NodeSharedComp");
 
-	return m_shared_comp_bitset[GetSharedCompTypeID<T>()];
+	if (std::is_base_of<CompAsset, T>::value) 
+	{
+		auto id = GetSharedCompTypeID<CompAsset>();
+		if (!m_shared_comp_bitset[id]) {
+			return false;
+		} else {
+			int idx = QueryIndexByID<std::shared_ptr<NodeSharedComp>>(m_shared_comp, id);
+			auto& comp = *reinterpret_cast<T*>(m_shared_comp[idx].get());
+			return comp.AssetTypeID() == GetAssetUniqueTypeID<T>();
+		}
+	}
+	else
+	{
+		return m_shared_comp_bitset[GetSharedCompTypeID<T>()];
+	}
 }
 
 template <typename T, typename... TArgs>
@@ -96,7 +93,8 @@ T& SceneNode::AddSharedComp(TArgs&&... args)
 	auto comp_ptr = std::make_shared<T>(std::forward<TArgs>(args)...);
 	auto& comp = *comp_ptr;
 
-	SharedCompID id = GetSharedCompTypeID<T>();
+	SharedCompID id = std::is_base_of<CompAsset, T>::value ? 
+		GetSharedCompTypeID<CompAsset>() : GetSharedCompTypeID<T>();
 	m_shared_comp_bitset[id] = true;
 
 	auto itr = m_shared_comp.begin();
@@ -118,15 +116,23 @@ T& SceneNode::GetSharedComp() const
 		"T must inherit from NodeSharedComp");
 
 	GD_ASSERT(HasSharedComp<T>(), "no component");
-	auto id = GetSharedCompTypeID<T>();
+	SharedCompID id = std::is_base_of<CompAsset, T>::value ?
+		GetSharedCompTypeID<CompAsset>() : GetSharedCompTypeID<T>();
 
+	int idx = QueryIndexByID<std::shared_ptr<NodeSharedComp>>(m_shared_comp, id);
+	return *reinterpret_cast<T*>(m_shared_comp[idx].get());
+}
+
+template <typename T>
+int SceneNode::QueryIndexByID(const std::vector<T>& array, size_t id)
+{
 	int idx = -1;
 	int start = 0;
-	int end = m_shared_comp.size() - 1;
+	int end = array.size() - 1;
 	while (start <= end)
 	{
 		int mid = (start + end) / 2;
-		auto& comp = m_shared_comp[mid];
+		auto& comp = array[mid];
 		if (id == comp->TypeID()) {
 			idx = mid;
 			break;
@@ -137,8 +143,7 @@ T& SceneNode::GetSharedComp() const
 		}
 	}	
 	GD_ASSERT(idx != -1, "err idx");
-
-	return *reinterpret_cast<T*>(m_shared_comp[idx].get());
+	return idx;
 }
 
 }
