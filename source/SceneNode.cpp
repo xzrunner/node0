@@ -39,4 +39,22 @@ std::shared_ptr<SceneNode> SceneNode::Clone() const
 	return std::make_shared<SceneNode>(*this);
 }
 
+void SceneNode::TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeUniqueComp>&)> func)
+{
+	for (auto& comp : m_unique_comp) {
+		if (!func(comp)) {
+			break;
+		}
+	}
+}
+
+void SceneNode::TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeSharedComp>&)> func)
+{
+	for (auto& comp : m_shared_comp) {
+		if (!func(comp)) {
+			break;
+		}
+	}
+}
+
 }

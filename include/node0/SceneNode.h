@@ -4,6 +4,7 @@
 #include <vector>
 #include <bitset>
 #include <array>
+#include <functional>
 
 namespace n0
 {
@@ -31,6 +32,8 @@ public:
 	template <typename T>
 	T& GetUniqueComp() const;
 
+	void TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeUniqueComp>&)> func);
+
 	// shared
 
 	template <typename T>
@@ -42,10 +45,12 @@ public:
 	template <typename T>
 	T& GetSharedComp() const;
 
-	//const std::vector<std::unique_ptr<NodeComponent>>& GetAllComponents() const {
-	//	return m_components;
-	//}
+	void TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeSharedComp>&)> func);
 	
+private:
+	template <typename T>
+	static int QueryIndexByID(const std::vector<T>& array, size_t id);
+
 private:
 	std::vector<std::unique_ptr<NodeUniqueComp>> m_unique_comp;
 	std::vector<std::shared_ptr<NodeSharedComp>> m_shared_comp;
