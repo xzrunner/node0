@@ -21,10 +21,16 @@ T& SceneNode::AddComponent(TArgs&&... args)
 	auto comp_ptr = std::make_unique<T>(std::forward<TArgs>(args)...);
 	auto& comp = *comp_ptr;
 
-	m_component_bitset[GetComponentTypeID<T>()] = true;
-	m_components.insert(
-		std::upper_bound(m_components.begin(), m_components.end(), comp_ptr, NodeComponentLessThan()),
-		std::move(comp_ptr));
+	ComponentID id = GetComponentTypeID<T>();
+	m_component_bitset[id] = true;
+
+	auto itr = m_components.begin();
+	for (; itr != m_components.end(); ++itr) {
+		if ((*itr)->TypeID() > id) {
+			break;
+		}
+	}
+	m_components.insert(itr, std::move(comp_ptr));
 
 //	comp.Init();
 	return comp;
@@ -36,11 +42,25 @@ T& SceneNode::GetComponent() const
 	GD_ASSERT(HasComponent<T>(), "no component");
 	auto id = GetComponentTypeID<T>();
 
-	auto itr = std::upper_bound(m_components.begin(), m_components.end(), id, NodeComponentLessThan());
-//	GD_ASSERT(itr != m_components.end(), "err idx");
+	int idx = -1;
+	int start = 0;
+	int end = m_components.size() - 1;
+	while (start <= end)
+	{
+		int mid = (start + end) / 2;
+		auto& comp = m_components[mid];
+		if (id == comp->TypeID()) {
+			idx = mid;
+			break;
+		} else if (id < comp->TypeID()) {
+			end = mid - 1;
+		} else {
+			start = mid + 1;
+		}
+	}	
+	GD_ASSERT(idx != -1, "err idx");
 
-	auto ptr(itr->get());
-	return *reinterpret_cast<T*>(ptr);
+	return *reinterpret_cast<T*>(m_components[idx].get());
 }
 
 }
