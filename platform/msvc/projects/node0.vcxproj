@@ -11,8 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\node0\CompAsset.h" />
     <ClInclude Include="..\..\..\include\node0\CompComplex.h" />
-    <ClInclude Include="..\..\..\include\node0\NodeComponent.h" />
+    <ClInclude Include="..\..\..\include\node0\NodeUniqueComp.h" />
+    <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h" />
     <ClInclude Include="..\..\..\include\node0\SceneNode.h" />
     <ClInclude Include="..\..\..\include\node0\typedef.h" />
   </ItemGroup>

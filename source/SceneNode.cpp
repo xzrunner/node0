@@ -4,11 +4,13 @@ namespace n0
 {
 
 SceneNode::SceneNode(const SceneNode& node)
-	: m_component_bitset(node.m_component_bitset)
+	: m_shared_comp(node.m_shared_comp)
+	, m_unique_comp_bitset(node.m_unique_comp_bitset)
+	, m_shared_comp_bitset(node.m_shared_comp_bitset)
 {
-	m_components.reserve(node.m_components.size());
-	for (auto& comp : node.m_components) {
-		m_components.push_back(comp->Clone());
+	m_unique_comp.reserve(node.m_unique_comp.size());
+	for (auto& comp : node.m_unique_comp) {
+		m_unique_comp.push_back(comp->Clone());
 	}
 }
 
@@ -18,13 +20,16 @@ SceneNode& SceneNode::operator = (const SceneNode& node)
 		return *this;
 	}
 
-	m_components.clear();
-	m_components.reserve(node.m_components.size());
-	for (auto& comp : node.m_components) {
-		m_components.push_back(comp->Clone());
+	m_unique_comp.clear();
+	m_unique_comp.reserve(node.m_unique_comp.size());
+	for (auto& comp : node.m_unique_comp) {
+		m_unique_comp.push_back(comp->Clone());
 	}
 
-	m_component_bitset = node.m_component_bitset;
+	m_shared_comp = node.m_shared_comp;
+
+	m_unique_comp_bitset = node.m_unique_comp_bitset;
+	m_shared_comp_bitset = node.m_shared_comp_bitset;
 
 	return *this;
 }

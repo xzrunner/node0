@@ -2,13 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="..\..\..\include\node0\typedef.h" />
-    <ClInclude Include="..\..\..\include\node0\NodeComponent.h">
-      <Filter>component</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\node0\SceneNode.h">
       <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\node0\CompComplex.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\CompAsset.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodeUniqueComp.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h">
       <Filter>component</Filter>
     </ClInclude>
   </ItemGroup>

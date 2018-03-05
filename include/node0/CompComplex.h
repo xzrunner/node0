@@ -1,6 +1,6 @@
 #pragma once
 
-#include "node0/NodeComponent.h"
+#include "node0/CompAsset.h"
 #include "node0/typedef.h"
 
 #include <vector>
@@ -9,15 +9,16 @@
 namespace n0
 {
 
-class CompComplex : public NodeComponent
+class CompComplex : public CompAsset
 {
 public:
 	virtual const char* Type() const override { return TYPE_NAME; }
-	virtual ComponentID TypeID() const override { 
-		return GetComponentTypeID<CompComplex>(); }
-	virtual std::unique_ptr<NodeComponent> Clone() const override;
 
-	void Traverse(std::function<bool(const n0::SceneNodePtr&)> func) const;
+	virtual AssetID AssetTypeID() const override {
+		return GetAssetUniqueTypeID<CompComplex>();
+	}
+
+	virtual void Traverse(std::function<bool(const n0::SceneNodePtr&)> func) const override;
 
 	void AddChild(const std::shared_ptr<SceneNode>& child);
 	bool RemoveChild(const std::shared_ptr<SceneNode>& child);
