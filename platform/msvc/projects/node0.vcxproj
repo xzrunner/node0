@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\node0\CompAsset.h" />
-    <ClInclude Include="..\..\..\include\node0\CompComplex.h" />
     <ClInclude Include="..\..\..\include\node0\NodeUniqueComp.h" />
     <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h" />
     <ClInclude Include="..\..\..\include\node0\SceneNode.h" />
@@ -22,7 +21,6 @@
     <None Include="..\..\..\include\node0\SceneNode.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\source\CompComplex.cpp" />
     <ClCompile Include="..\..\..\source\SceneNode.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
