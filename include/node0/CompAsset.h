@@ -3,6 +3,8 @@
 #include "node0/NodeSharedComp.h"
 #include "node0/typedef.h"
 
+#include <SM_Rect.h>
+
 #include <functional>
 
 namespace n0
@@ -39,6 +41,8 @@ public:
 	virtual AssetID AssetTypeID() const = 0;
 
 	virtual void Traverse(std::function<bool(const SceneNodePtr&)> func) const = 0;
+
+	virtual sm::rect GetBounding() const = 0;
 
 }; // CompAsset
 
