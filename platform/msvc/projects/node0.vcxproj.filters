@@ -14,6 +14,9 @@
     <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h">
       <Filter>component</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodeFlag.h">
+      <Filter>entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
