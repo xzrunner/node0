@@ -30,6 +30,8 @@ inline UniqueCompID GetUniqueCompTypeID() noexcept
     return type_id;
 }
 
+class SceneNode;
+
 class NodeUniqueComp : boost::noncopyable
 {
 public:
@@ -37,7 +39,7 @@ public:
 
 	virtual const char* Type() const = 0;
 	virtual UniqueCompID TypeID() const = 0;
-	virtual std::unique_ptr<NodeUniqueComp> Clone() const = 0;
+	virtual std::unique_ptr<NodeUniqueComp> Clone(const SceneNode& node) const = 0;
 
 }; // NodeUniqueComp
 

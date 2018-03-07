@@ -81,7 +81,7 @@ void SceneNode::CopyFrom(const SceneNode& node)
 	{
 		m_unique_comp = new std::unique_ptr<NodeUniqueComp>[m.unique_comp_sz];
 		for (size_t i = 0; i < m.unique_comp_sz; ++i) {
-			m_unique_comp[i] = node.m_unique_comp[i]->Clone();
+			m_unique_comp[i] = node.m_unique_comp[i]->Clone(node);
 		}
 	}
 	if (m.shared_comp_sz > 0)
