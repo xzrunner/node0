@@ -1,5 +1,9 @@
 #pragma once
 
+#include "node0/NodeFlag.h"
+
+#include <guard/check.h>
+
 #include <memory>
 #include <vector>
 #include <bitset>
@@ -15,11 +19,17 @@ class NodeSharedComp;
 class SceneNode
 {
 public:
-	SceneNode() {}
+	SceneNode();
 	SceneNode(const SceneNode&);
 	SceneNode& operator = (const SceneNode&);
+	~SceneNode();
 
 	std::shared_ptr<SceneNode> Clone() const;
+
+	template <typename T>
+	bool GetFlag() const;
+	template <typename T>
+	void SetFlag(bool flag) const;
 
 	// unique
 
@@ -54,15 +64,36 @@ public:
 	
 private:
 	template <typename T>
-	static int QueryIndexByID(const std::vector<T>& array, size_t id);
+	static int QueryIndexByID(const T* array, size_t array_sz, size_t id);
+
+	void Clear();
+	void CopyFrom(const SceneNode& node);
 
 private:
-	std::vector<std::unique_ptr<NodeUniqueComp>> m_unique_comp;
-	std::vector<std::shared_ptr<NodeSharedComp>> m_shared_comp;
+	static const size_t MAX_UNIQUE_COMPONENTS = 16;
+	static const size_t MAX_SHARED_COMPONENTS = 4;
 
-	static const size_t MAX_COMPONENTS = 16;
-	std::bitset<MAX_COMPONENTS> m_unique_comp_bitset;
-	std::bitset<MAX_COMPONENTS> m_shared_comp_bitset;
+	static const size_t MAX_FLAGS = 6;
+
+	struct M
+	{
+		M() { Clear(); }
+
+		void Clear() {
+			memset(this, 0, sizeof(M));
+		}
+
+		uint32_t unique_comp_bitset   : MAX_UNIQUE_COMPONENTS;
+		uint32_t shared_comp_bitset   : MAX_SHARED_COMPONENTS;
+		uint32_t unique_comp_sz       : 4;
+		uint32_t shared_comp_sz       : 2;
+		mutable uint32_t flags_bitset : MAX_FLAGS;
+	};
+
+	std::unique_ptr<NodeUniqueComp>* m_unique_comp = nullptr;
+	std::shared_ptr<NodeSharedComp>* m_shared_comp = nullptr;
+
+	M m;
 
 }; // SceneNode
 
