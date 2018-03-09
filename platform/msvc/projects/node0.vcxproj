@@ -16,6 +16,7 @@
     <ClInclude Include="..\..\..\include\node0\NodeUniqueComp.h" />
     <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h" />
     <ClInclude Include="..\..\..\include\node0\SceneNode.h" />
+    <ClInclude Include="..\..\..\include\node0\NodeWithPos.h" />
     <ClInclude Include="..\..\..\include\node0\typedef.h" />
   </ItemGroup>
   <ItemGroup>
