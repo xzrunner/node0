@@ -34,6 +34,8 @@ inline AssetID GetAssetUniqueTypeID() noexcept
 class CompAsset : public NodeSharedComp
 {
 public:
+	CompAsset() : m_node_count(0) {}
+
 	virtual n0::SharedCompID TypeID() const override {
 		return GetSharedCompTypeID<CompAsset>();
 	}
@@ -43,6 +45,19 @@ public:
 	virtual void Traverse(std::function<bool(const SceneNodePtr&)> func) const = 0;
 
 	virtual sm::rect GetBounding() const = 0;
+
+	virtual void InitNodeCount() const {}
+
+	size_t GetNodeCount() const 
+	{
+		if (m_node_count == 0) {
+			InitNodeCount();
+		}
+		return m_node_count; 
+	}
+
+protected:
+	mutable size_t m_node_count;
 
 }; // CompAsset
 
