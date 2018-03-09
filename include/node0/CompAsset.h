@@ -46,7 +46,7 @@ public:
 
 	virtual sm::rect GetBounding() const = 0;
 
-	virtual void InitNodeCount() const {}
+	virtual void InitNodeCount() const = 0;
 
 	size_t GetNodeCount() const 
 	{
