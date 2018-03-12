@@ -42,7 +42,8 @@ public:
 	
 	virtual AssetID AssetTypeID() const = 0;
 
-	virtual void Traverse(std::function<bool(const SceneNodePtr&)> func) const = 0;
+	virtual void Traverse(std::function<bool(const SceneNodePtr&)> func,
+		bool inverse = false) const = 0;
 
 	virtual sm::rect GetBounding() const = 0;
 
