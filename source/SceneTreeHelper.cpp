@@ -1,4 +1,4 @@
-#include "node0/SceneTree.h"
+#include "node0/SceneTreeHelper.h"
 #include "node0/SceneNode.h"
 #include "node0/CompAsset.h"
 
@@ -7,8 +7,8 @@
 namespace n0
 {
 
-void SceneTree::GetPathToRoot(const SceneNodePtr& root, size_t end_id,
-	                          std::vector<SceneNodePtr>& path)
+void SceneTreeHelper::GetPathToRoot(const SceneNodePtr& root, size_t end_id,
+	                                std::vector<SceneNodePtr>& path)
 {
 	GD_ASSERT(root, "err roor");
 

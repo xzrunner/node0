@@ -20,7 +20,7 @@
     <ClInclude Include="..\..\..\include\node0\NodeWithPos.h">
       <Filter>entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\node0\SceneTree.h">
+    <ClInclude Include="..\..\..\include\node0\SceneTreeHelper.h">
       <Filter>entity</Filter>
     </ClInclude>
   </ItemGroup>
@@ -28,10 +28,10 @@
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
       <Filter>entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\SceneTree.cpp">
+    <ClCompile Include="..\..\..\source\NodeWithPos.cpp">
       <Filter>entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\NodeWithPos.cpp">
+    <ClCompile Include="..\..\..\source\SceneTreeHelper.cpp">
       <Filter>entity</Filter>
     </ClCompile>
   </ItemGroup>

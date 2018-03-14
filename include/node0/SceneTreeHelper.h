@@ -7,12 +7,12 @@
 namespace n0
 {
 
-class SceneTree
+class SceneTreeHelper
 {
 public:
 	static void GetPathToRoot(const SceneNodePtr& root, size_t end_id, 
 		std::vector<SceneNodePtr>& path);
 
-}; // SceneTree
+}; // SceneTreeHelper
 
 }
