@@ -15,8 +15,6 @@ public:
 
 public:
 	NodeWithPos() : node(nullptr), root(nullptr), node_id(0) {}
-	NodeWithPos(const SceneNodePtr& node)
-		: node(node), root(nullptr), node_id(0) {}
 	NodeWithPos(const SceneNodePtr& node, const SceneNodePtr& root, size_t node_id)
 		: node(node), root(root), node_id(node_id) {}
 
