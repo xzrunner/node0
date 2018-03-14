@@ -34,7 +34,7 @@ inline AssetID GetAssetUniqueTypeID() noexcept
 class CompAsset : public NodeSharedComp
 {
 public:
-	CompAsset() : m_node_count(0) {}
+	CompAsset() : m_node_count(1) {}
 
 	virtual n0::SharedCompID TypeID() const override {
 		return GetSharedCompTypeID<CompAsset>();
@@ -47,15 +47,7 @@ public:
 
 	virtual sm::rect GetBounding() const = 0;
 
-	virtual void InitNodeCount() const = 0;
-
-	size_t GetNodeCount() const 
-	{
-		if (m_node_count == 0) {
-			InitNodeCount();
-		}
-		return m_node_count; 
-	}
+	size_t GetNodeCount() const { return m_node_count; }
 
 protected:
 	mutable size_t m_node_count;
