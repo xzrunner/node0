@@ -24,6 +24,7 @@
     <None Include="..\..\..\include\node0\SceneNode.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\NodeWithPos.cpp" />
     <ClCompile Include="..\..\..\source\SceneNode.cpp" />
     <ClCompile Include="..\..\..\source\SceneTree.cpp" />
   </ItemGroup>

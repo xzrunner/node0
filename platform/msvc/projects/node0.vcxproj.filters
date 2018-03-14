@@ -31,6 +31,9 @@
     <ClCompile Include="..\..\..\source\SceneTree.cpp">
       <Filter>entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeWithPos.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="component">

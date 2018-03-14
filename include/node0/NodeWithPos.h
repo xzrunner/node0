@@ -8,23 +8,25 @@ namespace n0
 class NodeWithPos
 {
 public:
-	SceneNodePtr node;
+	NodeWithPos();
+	NodeWithPos(const SceneNodePtr& node, const SceneNodePtr& root, size_t node_id);
 
-	SceneNodePtr root;
-	size_t       node_id;
+	bool operator == (const NodeWithPos& nwp) const;
 
-public:
-	NodeWithPos() : node(nullptr), root(nullptr), node_id(0) {}
-	NodeWithPos(const SceneNodePtr& node, const SceneNodePtr& root, size_t node_id)
-		: node(node), root(root), node_id(node_id) {}
+	const SceneNodePtr& GetNode() const { return m_node; }
+	const SceneNodePtr& GetRoot() const { return m_root; }
+	size_t GetNodeID() const { return m_node_id; }
 
-	bool operator == (const NodeWithPos& nwp) const
-	{
-		return node == nwp.node
-			&& root == nwp.root
-			&& node_id == nwp.node_id;
-	}
-	
+	void Init(const SceneNodePtr& node, const SceneNodePtr& root, size_t node_id);
+
+	void Reset();
+
+private:
+	SceneNodePtr m_node;
+
+	SceneNodePtr m_root;
+	size_t       m_node_id;
+
 }; // SceneNodePos
 
 }
