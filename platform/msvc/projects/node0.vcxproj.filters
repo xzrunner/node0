@@ -20,9 +20,15 @@
     <ClInclude Include="..\..\..\include\node0\NodeWithPos.h">
       <Filter>entity</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\SceneTree.h">
+      <Filter>entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\SceneTree.cpp">
       <Filter>entity</Filter>
     </ClCompile>
   </ItemGroup>
