@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\node0\CompAsset.h" />
     <ClInclude Include="..\..\..\include\node0\NodeFlag.h" />
+    <ClInclude Include="..\..\..\include\node0\NodePool.h" />
     <ClInclude Include="..\..\..\include\node0\NodeUniqueComp.h" />
     <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h" />
     <ClInclude Include="..\..\..\include\node0\SceneNode.h" />
@@ -24,6 +25,7 @@
     <None Include="..\..\..\include\node0\SceneNode.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\NodePool.cpp" />
     <ClCompile Include="..\..\..\source\NodeWithPos.cpp" />
     <ClCompile Include="..\..\..\source\SceneNode.cpp" />
     <ClCompile Include="..\..\..\source\SceneTreeHelper.cpp" />

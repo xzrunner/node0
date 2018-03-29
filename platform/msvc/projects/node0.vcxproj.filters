@@ -23,6 +23,9 @@
     <ClInclude Include="..\..\..\include\node0\SceneTreeHelper.h">
       <Filter>entity</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodePool.h">
+      <Filter>system</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
@@ -34,6 +37,9 @@
     <ClCompile Include="..\..\..\source\SceneTreeHelper.cpp">
       <Filter>entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\NodePool.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="component">
@@ -41,6 +47,9 @@
     </Filter>
     <Filter Include="entity">
       <UniqueIdentifier>{bcc32d85-4792-423e-a535-2ca7012771d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{0c86438e-981a-499c-b425-e70ca9533ea8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
