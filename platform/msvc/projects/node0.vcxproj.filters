@@ -23,6 +23,9 @@
     <ClInclude Include="..\..\..\include\node0\SceneTreeHelper.h">
       <Filter>entity</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\CompComplex.h">
+      <Filter>component\complex</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
@@ -34,6 +37,9 @@
     <ClCompile Include="..\..\..\source\SceneTreeHelper.cpp">
       <Filter>entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\CompComplex.cpp">
+      <Filter>component\complex</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="component">
@@ -41,6 +47,9 @@
     </Filter>
     <Filter Include="entity">
       <UniqueIdentifier>{bcc32d85-4792-423e-a535-2ca7012771d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component\complex">
+      <UniqueIdentifier>{7b2ae61c-a3ad-4d0a-a992-1c36c9719151}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
