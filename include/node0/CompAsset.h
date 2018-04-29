@@ -3,8 +3,6 @@
 #include "node0/NodeSharedComp.h"
 #include "node0/typedef.h"
 
-#include <SM_Rect.h>
-
 #include <functional>
 
 namespace n0
@@ -44,8 +42,6 @@ public:
 
 	virtual void Traverse(std::function<bool(const SceneNodePtr&)> func,
 		bool inverse = false) const = 0;
-
-	virtual sm::rect GetBounding() const = 0;
 
 	size_t GetNodeCount() const { return m_node_count; }
 
