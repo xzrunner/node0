@@ -4,7 +4,7 @@
 namespace n0
 {
 
-const char* const CompComplex::TYPE_NAME = "n2_complex";
+const char* const CompComplex::TYPE_NAME = "n0_complex";
 
 //std::shared_ptr<NodeComponent> CompComplex::Clone() const
 //{
