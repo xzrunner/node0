@@ -26,6 +26,9 @@
     <ClInclude Include="..\..\..\include\node0\CompComplex.h">
       <Filter>component\complex</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\CompIdentity.h">
+      <Filter>component\id</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
@@ -40,6 +43,9 @@
     <ClCompile Include="..\..\..\source\CompComplex.cpp">
       <Filter>component\complex</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\CompIdentity.cpp">
+      <Filter>component\id</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="component">
@@ -50,6 +56,9 @@
     </Filter>
     <Filter Include="component\complex">
       <UniqueIdentifier>{7b2ae61c-a3ad-4d0a-a992-1c36c9719151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component\id">
+      <UniqueIdentifier>{fc73d34c-6bbe-4b0c-8476-836e7ef7ce20}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
