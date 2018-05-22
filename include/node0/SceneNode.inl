@@ -6,23 +6,6 @@
 
 namespace n0
 {
-// flags
-
-template <typename T>
-bool SceneNode::GetFlag() const
-{
-	FlagID id = GetFlagTypeID<T>();
-	GD_ASSERT(id < MAX_FLAGS, "too many flags.");
-	return (m.flags_bitset & (1 << id)) != 0;
-}
-
-template <typename T>
-void SceneNode::SetFlag(bool flag) const
-{
-	FlagID id = GetFlagTypeID<T>();
-	GD_ASSERT(id < MAX_FLAGS, "too many flags.");
-	flag ? (m.flags_bitset |= (1 << id)) : (m.flags_bitset &= ~(1 << id));
-}
 
 // unique
 
@@ -74,7 +57,7 @@ T& SceneNode::AddUniqueComp(TArgs&&... args)
 	m.unique_comp_sz = new_unique_comp_sz;
 	delete[] m_unique_comp;
 	m_unique_comp = new_unique_comp;
-	
+
 //	comp.Init();
 	return comp;
 }
@@ -100,7 +83,7 @@ bool SceneNode::HasSharedComp() const
 	static_assert(std::is_base_of<NodeSharedComp, T>::value,
 		"T must inherit from NodeSharedComp");
 
-	if (std::is_base_of<CompAsset, T>::value) 
+	if (std::is_base_of<CompAsset, T>::value)
 	{
 		auto id = GetSharedCompTypeID<CompAsset>();
 		if ((m.shared_comp_bitset & (1 << id)) == 0) {
@@ -130,7 +113,7 @@ T& SceneNode::AddSharedComp(TArgs&&... args)
 	auto comp_ptr = std::make_shared<T>(std::forward<TArgs>(args)...);
 	auto& comp = *comp_ptr;
 
-	SharedCompID id = std::is_base_of<CompAsset, T>::value ? 
+	SharedCompID id = std::is_base_of<CompAsset, T>::value ?
 		GetSharedCompTypeID<CompAsset>() : GetSharedCompTypeID<T>();
 	GD_ASSERT(id < MAX_SHARED_COMPONENTS, "too many components");
 	m.shared_comp_bitset |= (1 << id);
@@ -172,7 +155,7 @@ void SceneNode::AddSharedCompNoCreate(const std::shared_ptr<T>& comp)
 
 	GD_ASSERT(!HasSharedComp<T>(), "already has the component");
 
-	SharedCompID id = std::is_base_of<CompAsset, T>::value ? 
+	SharedCompID id = std::is_base_of<CompAsset, T>::value ?
 		GetSharedCompTypeID<CompAsset>() : GetSharedCompTypeID<T>();
 	GD_ASSERT(id < MAX_SHARED_COMPONENTS, "too many components");
 	m.shared_comp_bitset |= (1 << id);
@@ -241,7 +224,7 @@ int SceneNode::QueryIndexByID(const T* array, size_t array_sz, size_t id)
 		} else {
 			start = mid + 1;
 		}
-	}	
+	}
 	GD_ASSERT(idx != -1, "err idx");
 	return idx;
 }

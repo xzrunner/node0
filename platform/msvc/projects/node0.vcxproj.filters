@@ -14,9 +14,6 @@
     <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\node0\NodeFlag.h">
-      <Filter>entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\node0\NodeWithPos.h">
       <Filter>entity</Filter>
     </ClInclude>
@@ -28,6 +25,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\node0\CompIdentity.h">
       <Filter>component\id</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\CompFlags.h">
+      <Filter>component\flags</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodeFlag.h">
+      <Filter>component\flags</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodeFlags.h">
+      <Filter>component\flags</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodeFlagsHelper.h">
+      <Filter>component\flags</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +55,9 @@
     <ClCompile Include="..\..\..\source\CompIdentity.cpp">
       <Filter>component\id</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\CompFlags.cpp">
+      <Filter>component\flags</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="component">
@@ -60,10 +72,16 @@
     <Filter Include="component\id">
       <UniqueIdentifier>{fc73d34c-6bbe-4b0c-8476-836e7ef7ce20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="component\flags">
+      <UniqueIdentifier>{88b39bc4-0cee-4eab-8116-ea8fc1a00954}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\node0\SceneNode.inl">
       <Filter>entity</Filter>
+    </None>
+    <None Include="..\..\..\include\node0\CompFlags.inl">
+      <Filter>component\flags</Filter>
     </None>
   </ItemGroup>
 </Project>

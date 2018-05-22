@@ -2,8 +2,6 @@
 
 #include "node0/NodeFlag.h"
 
-#include <guard/check.h>
-
 #include <memory>
 #include <vector>
 #include <bitset>
@@ -25,11 +23,6 @@ public:
 	~SceneNode();
 
 	std::shared_ptr<SceneNode> Clone() const;
-
-	template <typename T>
-	bool GetFlag() const;
-	template <typename T>
-	void SetFlag(bool flag) const;
 
 	// unique
 
@@ -61,7 +54,7 @@ public:
 	std::shared_ptr<T> GetSharedCompPtr() const;
 
 	void TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeSharedComp>&)> func);
-	
+
 private:
 	template <typename T>
 	static int QueryIndexByID(const T* array, size_t array_sz, size_t id);
@@ -70,10 +63,8 @@ private:
 	void CopyFrom(const SceneNode& node);
 
 private:
-	static const size_t MAX_UNIQUE_COMPONENTS = 16;
+	static const size_t MAX_UNIQUE_COMPONENTS = 21;
 	static const size_t MAX_SHARED_COMPONENTS = 4;
-
-	static const size_t MAX_FLAGS = 6;
 
 	struct M
 	{
@@ -85,9 +76,8 @@ private:
 
 		uint32_t unique_comp_bitset   : MAX_UNIQUE_COMPONENTS;
 		uint32_t shared_comp_bitset   : MAX_SHARED_COMPONENTS;
-		uint32_t unique_comp_sz       : 4;
+		uint32_t unique_comp_sz       : 5;
 		uint32_t shared_comp_sz       : 2;
-		mutable uint32_t flags_bitset : MAX_FLAGS;
 	};
 
 	std::unique_ptr<NodeUniqueComp>* m_unique_comp = nullptr;
