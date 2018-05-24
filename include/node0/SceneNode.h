@@ -37,6 +37,8 @@ public:
 
 	void TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeUniqueComp>&)> func);
 
+	size_t GetUniqueCompCount() const { return m.unique_comp_sz; }
+
 	// shared
 
 	template <typename T>
@@ -54,6 +56,8 @@ public:
 	std::shared_ptr<T> GetSharedCompPtr() const;
 
 	void TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeSharedComp>&)> func);
+
+	size_t GetSharedCompCount() const { return m.shared_comp_sz; }
 
 private:
 	template <typename T>
