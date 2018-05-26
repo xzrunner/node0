@@ -38,6 +38,9 @@
     <ClInclude Include="..\..\..\include\node0\NodeFlagsHelper.h">
       <Filter>component\flags</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\NodeComp.h">
+      <Filter>component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">

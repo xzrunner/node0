@@ -1,6 +1,6 @@
 #pragma once
 
-#include "node0/NodeSharedComp.h"
+#include "node0/NodeComp.h"
 #include "node0/typedef.h"
 
 #include <functional>
@@ -29,15 +29,16 @@ inline AssetID GetAssetUniqueTypeID() noexcept
 	return type_id;
 }
 
-class CompAsset : public NodeSharedComp
+class CompAsset : public NodeComp
 {
 public:
 	CompAsset() : m_node_count(1) {}
 
-	virtual n0::SharedCompID TypeID() const override {
-		return GetSharedCompTypeID<CompAsset>();
+	virtual n0::CompID TypeID() const override {
+		return GetCompTypeID<CompAsset>();
 	}
-	
+	virtual std::unique_ptr<NodeComp> Clone(const SceneNode& node) const { return nullptr; }
+
 	virtual AssetID AssetTypeID() const = 0;
 
 	virtual void Traverse(std::function<bool(const SceneNodePtr&)> func,

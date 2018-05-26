@@ -28,7 +28,7 @@ std::shared_ptr<SceneNode> SceneNode::Clone() const
 	return std::make_shared<SceneNode>(*this);
 }
 
-void SceneNode::TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeUniqueComp>&)> func)
+void SceneNode::TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeComp>&)> func)
 {
 	for (size_t i = 0; i < m.unique_comp_sz; ++i) {
 		if (!func(m_unique_comp[i])) {
@@ -37,7 +37,7 @@ void SceneNode::TraverseUniqueComp(std::function<bool(const std::unique_ptr<Node
 	}
 }
 
-void SceneNode::TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeSharedComp>&)> func)
+void SceneNode::TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeComp>&)> func)
 {
 	for (size_t i = 0; i < m.shared_comp_sz; ++i) {
 		if (!func(m_shared_comp[i])) {
@@ -79,14 +79,14 @@ void SceneNode::CopyFrom(const SceneNode& node)
 	m = node.m;
 	if (m.unique_comp_sz > 0)
 	{
-		m_unique_comp = new std::unique_ptr<NodeUniqueComp>[m.unique_comp_sz];
+		m_unique_comp = new std::unique_ptr<NodeComp>[m.unique_comp_sz];
 		for (size_t i = 0; i < m.unique_comp_sz; ++i) {
 			m_unique_comp[i] = node.m_unique_comp[i]->Clone(node);
 		}
 	}
 	if (m.shared_comp_sz > 0)
 	{
-		m_shared_comp = new std::shared_ptr<NodeSharedComp>[m.shared_comp_sz];
+		m_shared_comp = new std::shared_ptr<NodeComp>[m.shared_comp_sz];
 		for (size_t i = 0; i < m.shared_comp_sz; ++i) {
 			m_shared_comp[i] = node.m_shared_comp[i];
 		}

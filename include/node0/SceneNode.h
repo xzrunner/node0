@@ -11,8 +11,8 @@
 namespace n0
 {
 
-class NodeUniqueComp;
-class NodeSharedComp;
+class NodeComp;
+class NodeComp;
 
 class SceneNode
 {
@@ -35,7 +35,7 @@ public:
 	template <typename T>
 	T& GetUniqueComp() const;
 
-	void TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeUniqueComp>&)> func);
+	void TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeComp>&)> func);
 
 	size_t GetUniqueCompCount() const { return m.unique_comp_sz; }
 
@@ -55,7 +55,7 @@ public:
 	template <typename T>
 	std::shared_ptr<T> GetSharedCompPtr() const;
 
-	void TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeSharedComp>&)> func);
+	void TraverseSharedComp(std::function<bool(const std::shared_ptr<NodeComp>&)> func);
 
 	size_t GetSharedCompCount() const { return m.shared_comp_sz; }
 
@@ -84,8 +84,8 @@ private:
 		uint32_t shared_comp_sz       : 2;
 	};
 
-	std::unique_ptr<NodeUniqueComp>* m_unique_comp = nullptr;
-	std::shared_ptr<NodeSharedComp>* m_shared_comp = nullptr;
+	std::unique_ptr<NodeComp>* m_unique_comp = nullptr;
+	std::shared_ptr<NodeComp>* m_shared_comp = nullptr;
 
 	M m;
 

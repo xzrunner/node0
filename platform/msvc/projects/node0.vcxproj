@@ -15,6 +15,7 @@
     <ClInclude Include="..\..\..\include\node0\CompComplex.h" />
     <ClInclude Include="..\..\..\include\node0\CompFlags.h" />
     <ClInclude Include="..\..\..\include\node0\CompIdentity.h" />
+    <ClInclude Include="..\..\..\include\node0\NodeComp.h" />
     <ClInclude Include="..\..\..\include\node0\NodeFlag.h" />
     <ClInclude Include="..\..\..\include\node0\NodeFlags.h" />
     <ClInclude Include="..\..\..\include\node0\NodeFlagsHelper.h" />

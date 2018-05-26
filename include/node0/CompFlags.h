@@ -1,18 +1,18 @@
 #pragma once
 
-#include "node0/NodeUniqueComp.h"
+#include "node0/NodeComp.h"
 
 namespace n0
 {
 
-class CompFlags : public NodeUniqueComp
+class CompFlags : public NodeComp
 {
 public:
 	virtual const char* Type() const override { return TYPE_NAME; }
-	virtual UniqueCompID TypeID() const override {
-		return GetUniqueCompTypeID<CompFlags>();
+	virtual CompID TypeID() const override {
+		return GetCompTypeID<CompFlags>();
 	}
-	virtual std::unique_ptr<NodeUniqueComp> Clone(const SceneNode& obj) const override;
+	virtual std::unique_ptr<NodeComp> Clone(const SceneNode& obj) const override;
 
 	template <typename T>
 	bool GetFlag() const;

@@ -12,7 +12,7 @@ CompIdentity::CompIdentity()
 {
 }
 
-std::unique_ptr<n0::NodeUniqueComp> CompIdentity::Clone(const n0::SceneNode& obj) const
+std::unique_ptr<n0::NodeComp> CompIdentity::Clone(const n0::SceneNode& obj) const
 {
 	auto comp = std::make_unique<CompIdentity>();
 	comp->m_filepath = m_filepath;

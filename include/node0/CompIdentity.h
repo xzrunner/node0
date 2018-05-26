@@ -1,22 +1,22 @@
 #pragma once
 
-#include "node0/NodeUniqueComp.h"
+#include "node0/NodeComp.h"
 
 #include <string>
 
 namespace n0
 {
 
-class CompIdentity : public NodeUniqueComp
+class CompIdentity : public NodeComp
 {
 public:
 	CompIdentity();
 
 	virtual const char* Type() const override { return TYPE_NAME; }
-	virtual UniqueCompID TypeID() const override {
-		return GetUniqueCompTypeID<CompIdentity>();
+	virtual CompID TypeID() const override {
+		return GetCompTypeID<CompIdentity>();
 	}
-	virtual std::unique_ptr<NodeUniqueComp> Clone(const SceneNode& obj) const override;
+	virtual std::unique_ptr<NodeComp> Clone(const SceneNode& obj) const override;
 
 	void SetFilepath(const std::string& filepath) { m_filepath = filepath; }
 	const std::string& GetFilepath() const { return m_filepath; }
