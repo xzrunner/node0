@@ -33,6 +33,9 @@ public:
 	T& AddUniqueComp(TArgs&&... args);
 
 	template <typename T>
+	bool RemoveUniqueComp();
+
+	template <typename T>
 	T& GetUniqueComp() const;
 
 	void TraverseUniqueComp(std::function<bool(const std::unique_ptr<NodeComp>&)> func);
@@ -46,6 +49,9 @@ public:
 
 	template <typename T, typename... TArgs>
 	T& AddSharedComp(TArgs&&... args);
+
+	template <typename T>
+	bool RemoveSharedComp();
 
 	template <typename T>
 	void AddSharedCompNoCreate(const std::shared_ptr<T>& comp);

@@ -63,6 +63,33 @@ T& SceneNode::AddUniqueComp(TArgs&&... args)
 }
 
 template <typename T>
+bool SceneNode::RemoveUniqueComp()
+{
+	if (!HasUniqueComp<T>()) {
+		return false;
+	}
+
+	CompID id = GetCompTypeID<T>();
+	GD_ASSERT(id < MAX_UNIQUE_COMPONENTS, "too many components");
+	m.unique_comp_bitset &= ~(1 << id);
+
+	auto new_unique_comp_sz = m.unique_comp_sz - 1;
+	auto new_unique_comp = new std::unique_ptr<NodeComp>[new_unique_comp_sz];
+	int ptr_new = 0, ptr_old = 0;
+	for (size_t i = 0; i < m.unique_comp_sz; ++i) {
+		if (m_unique_comp[i]->TypeID() != id) {
+			new_unique_comp[ptr_new++] = std::move(m_unique_comp[ptr_old++]);
+		}
+	}
+
+	m.unique_comp_sz = new_unique_comp_sz;
+	delete[] m_unique_comp;
+	m_unique_comp = new_unique_comp;
+
+	return true;
+}
+
+template <typename T>
 T& SceneNode::GetUniqueComp() const
 {
 	static_assert(std::is_base_of<NodeComp, T>::value,
@@ -145,6 +172,33 @@ T& SceneNode::AddSharedComp(TArgs&&... args)
 
 //	comp.Init();
 	return comp;
+}
+
+template <typename T>
+bool SceneNode::RemoveSharedComp()
+{
+	if (!HasSharedComp<T>()) {
+		return false;
+	}
+
+	CompID id = GetCompTypeID<T>();
+	GD_ASSERT(id < MAX_SHARED_COMPONENTS, "too many components");
+	m.shared_comp_bitset &= ~(1 << id);
+
+	auto new_shared_comp_sz = m.shared_comp_sz - 1;
+	auto new_shared_comp = new std::shared_ptr<NodeComp>[new_shared_comp_sz];
+	int ptr_new = 0, ptr_old = 0;
+	for (size_t i = 0; i < m.shared_comp_sz; ++i) {
+		if (m_shared_comp[i]->TypeID() != id) {
+			new_shared_comp[ptr_new++] = m_shared_comp[ptr_old++];
+		}
+	}
+
+	m.shared_comp_sz = new_shared_comp_sz;
+	delete[] m_shared_comp;
+	m_shared_comp = new_shared_comp;
+
+	return true;
 }
 
 template <typename T>
