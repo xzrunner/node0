@@ -8,12 +8,6 @@
     <ClInclude Include="..\..\..\include\node0\CompAsset.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\node0\NodeUniqueComp.h">
-      <Filter>component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\node0\NodeSharedComp.h">
-      <Filter>component</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\node0\NodeWithPos.h">
       <Filter>entity</Filter>
     </ClInclude>
