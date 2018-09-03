@@ -40,20 +40,24 @@ void CompComplex::AddChild(const std::shared_ptr<SceneNode>& child)
 {
 	m_children.push_back(child);
 
-	auto& casset = child->GetSharedComp<CompAsset>();
-	m_node_count += casset.GetNodeCount();
+	if (child->HasSharedComp<CompAsset>()) {
+		auto& casset = child->GetSharedComp<CompAsset>();
+		m_node_count += casset.GetNodeCount();
+	}
 }
 
 bool CompComplex::RemoveChild(const std::shared_ptr<SceneNode>& child)
 {
-	for (auto itr = m_children.begin(); itr != m_children.end(); ++itr) 
+	for (auto itr = m_children.begin(); itr != m_children.end(); ++itr)
 	{
-		if (*itr == child) 
+		if (*itr == child)
 		{
 			m_children.erase(itr);
 
-			auto& casset = child->GetSharedComp<CompAsset>();
-			m_node_count -= casset.GetNodeCount();
+			if (child->HasSharedComp<CompAsset>()) {
+				auto& casset = child->GetSharedComp<CompAsset>();
+				m_node_count -= casset.GetNodeCount();
+			}
 
 			return true;
 		}
@@ -71,10 +75,11 @@ void CompComplex::SetChildren(const std::vector<SceneNodePtr>& children)
 {
 	m_children = children;
 
-	for (auto& child : children) 
-	{
-		auto& casset = child->GetSharedComp<CompAsset>();
-		m_node_count += casset.GetNodeCount();
+	for (auto& child : children) {
+		if (child->HasSharedComp<CompAsset>()) {
+			auto& casset = child->GetSharedComp<CompAsset>();
+			m_node_count += casset.GetNodeCount();
+		}
 	}
 }
 
