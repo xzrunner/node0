@@ -38,14 +38,14 @@ void SceneTreeHelper::GetPathToRoot(const SceneNodePtr& root, size_t end_id,
 				return false;
 			}
 			// into
-			else if (end_id < curr_id + casset.GetNodeCount()) 
+			else if (end_id < curr_id + casset.GetNodeCount())
 			{
 				curr_node = node;
 				path.push_back(node);
 				return false;
-			} 
+			}
 			// skip
-			else 
+			else
 			{
 				curr_id += casset.GetNodeCount();
 				return true;

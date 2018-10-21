@@ -5,8 +5,8 @@
 namespace n0
 {
 
-NodeWithPos::NodeWithPos() 
-	: m_node(nullptr), m_root(nullptr), m_node_id(0) 
+NodeWithPos::NodeWithPos()
+	: m_node(nullptr), m_root(nullptr), m_node_id(0)
 {
 }
 
