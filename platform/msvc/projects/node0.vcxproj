@@ -15,6 +15,7 @@
     <ClInclude Include="..\..\..\include\node0\CompComplex.h" />
     <ClInclude Include="..\..\..\include\node0\CompFlags.h" />
     <ClInclude Include="..\..\..\include\node0\CompIdentity.h" />
+    <ClInclude Include="..\..\..\include\node0\CompMaterial.h" />
     <ClInclude Include="..\..\..\include\node0\NodeComp.h" />
     <ClInclude Include="..\..\..\include\node0\NodeFlag.h" />
     <ClInclude Include="..\..\..\include\node0\NodeFlags.h" />
@@ -32,6 +33,7 @@
     <ClCompile Include="..\..\..\source\CompComplex.cpp" />
     <ClCompile Include="..\..\..\source\CompFlags.cpp" />
     <ClCompile Include="..\..\..\source\CompIdentity.cpp" />
+    <ClCompile Include="..\..\..\source\CompMaterial.cpp" />
     <ClCompile Include="..\..\..\source\NodeWithPos.cpp" />
     <ClCompile Include="..\..\..\source\SceneNode.cpp" />
     <ClCompile Include="..\..\..\source\SceneTreeHelper.cpp" />
@@ -79,7 +81,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\cu\src;..\..\..\..\guard\include;..\..\..\..\external\rapidjson\include;..\..\..\..\external\boost\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\cu\src;..\..\..\..\guard\include;..\..\..\..\painting0\include;..\..\..\..\external\rapidjson\include;..\..\..\..\external\boost\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -93,7 +95,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\cu\src;..\..\..\..\guard\include;..\..\..\..\external\rapidjson\include;..\..\..\..\external\boost\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\cu\src;..\..\..\..\guard\include;..\..\..\..\painting0\include;..\..\..\..\external\rapidjson\include;..\..\..\..\external\boost\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>

@@ -15,7 +15,7 @@
       <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\node0\CompComplex.h">
-      <Filter>component\complex</Filter>
+      <Filter>component\assets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\node0\CompIdentity.h">
       <Filter>component\id</Filter>
@@ -35,6 +35,9 @@
     <ClInclude Include="..\..\..\include\node0\NodeComp.h">
       <Filter>component</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\node0\CompMaterial.h">
+      <Filter>component\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SceneNode.cpp">
@@ -47,13 +50,16 @@
       <Filter>entity</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\CompComplex.cpp">
-      <Filter>component\complex</Filter>
+      <Filter>component\assets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\CompIdentity.cpp">
       <Filter>component\id</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\CompFlags.cpp">
       <Filter>component\flags</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\CompMaterial.cpp">
+      <Filter>component\render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,14 +69,17 @@
     <Filter Include="entity">
       <UniqueIdentifier>{bcc32d85-4792-423e-a535-2ca7012771d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="component\complex">
-      <UniqueIdentifier>{7b2ae61c-a3ad-4d0a-a992-1c36c9719151}</UniqueIdentifier>
-    </Filter>
     <Filter Include="component\id">
       <UniqueIdentifier>{fc73d34c-6bbe-4b0c-8476-836e7ef7ce20}</UniqueIdentifier>
     </Filter>
     <Filter Include="component\flags">
       <UniqueIdentifier>{88b39bc4-0cee-4eab-8116-ea8fc1a00954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component\render">
+      <UniqueIdentifier>{fcad8961-5c6e-4e15-8c15-db555cbfb030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component\assets">
+      <UniqueIdentifier>{7b2ae61c-a3ad-4d0a-a992-1c36c9719151}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
