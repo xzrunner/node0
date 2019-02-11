@@ -1,8 +1,7 @@
 #pragma once
 
+#include <painting0/Material.h>
 #include <node0/NodeComp.h>
-
-namespace pt0 { class Material; }
 
 namespace n0
 {
