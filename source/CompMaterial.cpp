@@ -10,6 +10,7 @@ const char* const CompMaterial::TYPE_NAME = "n0_material";
 std::unique_ptr<NodeComp> CompMaterial::Clone(const SceneNode& node) const
 {
     auto comp = std::make_unique<CompMaterial>();
+    comp->m_material = std::make_unique<pt0::Material>();
     *comp->m_material = *m_material;
     return comp;
 }
