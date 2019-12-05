@@ -39,6 +39,12 @@ public:
 	virtual CompID TypeID() const = 0;
 	virtual std::unique_ptr<NodeComp> Clone(const SceneNode& node) const = 0;
 
+    bool IsSerializeEnable() const { return m_serialize; }
+    void DisableSerialize() { m_serialize = false; }
+
+private:
+    bool m_serialize = true;
+
 }; // NodeComp
 
 }
